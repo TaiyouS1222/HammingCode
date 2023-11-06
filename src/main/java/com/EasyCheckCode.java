@@ -19,7 +19,12 @@ public class EasyCheckCode {
         Boolean dataB[] =Arrays.copyOf(dataA, dataA.length);
         Boolean dataC[] = Arrays.copyOf(dataA, dataA.length);
         //隨機更改一位數據內容
-        dataB[random.nextInt(dataB.length)] = dataB[]
+        int r = random.nextInt(dataB.length);
+        if(dataB[r]){
+            dataB[r] = false;
+        }else {
+            dataB[r] = true;
+        }
         //三組數據內容
         System.out.println("三組數據內容:");
         Arrays.stream(dataA).forEach(x ->System.out.print(boolToInt(x)));
@@ -29,13 +34,30 @@ public class EasyCheckCode {
         Arrays.stream(dataC).forEach(x ->System.out.print(boolToInt(x)));
         //比較三組數據
         for (int k = 0;k<dataA.length;k++){
-            if(dataA[k] && dataB[k] && dataC[k]){
+            if(dataA[k].booleanValue() == dataB[k].booleanValue() == dataC[k].booleanValue()) {
                 continue;
-            }else if(dataA[k].equals(dataB[k]) && dataA.equals(dataC)){
+            }
+            if(dataA[k].booleanValue() == dataB[k].booleanValue()){
+                dataC[k] = !dataC[k];
+                continue;
+            }
+            if(dataB[k].booleanValue() == dataC[k].booleanValue()){
                 dataA[k] = !dataA[k];
+                continue;
+            }
+            if(dataC[k].booleanValue() == dataA[k].booleanValue()){
+                dataB[k] = !dataB[k];
             }
         }
-    }
+        //三組數據內容
+        System.out.println("\n");
+        System.out.println("轉換後三組數據內容:");
+        Arrays.stream(dataA).forEach(x ->System.out.print(boolToInt(x)));
+        System.out.println();
+        Arrays.stream(dataB).forEach(x ->System.out.print(boolToInt(x)));
+        System.out.println();
+        Arrays.stream(dataC).forEach(x ->System.out.print(boolToInt(x)));
+  }
     public static int boolToInt(boolean b){
         return b ? 1 : 0;
     }
