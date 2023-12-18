@@ -14,6 +14,7 @@ HammingCode
 則:
 **1**011000100001001
 ***
+範例程式碼(Java):
 ```java
 public class ParityCheck {
     public static void main(String[] args){
