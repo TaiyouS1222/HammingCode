@@ -15,7 +15,7 @@ HammingCode
 **1**011000100001001
 ***
 
-##範例程式碼(Java):
+範例程式碼(Java):
 
 ```java
 public class ParityCheck {
